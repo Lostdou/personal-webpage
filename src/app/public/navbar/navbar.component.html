@@ -1,0 +1,38 @@
+<div class="navbar-container" [class.visible]="isNavbarVisible">
+    <nav class="navbar">
+        <div class="navbar-profile">
+            <img src="https://avatars.githubusercontent.com/lostdou" 
+                 class="navbar-profile-picture" 
+                 alt="Profile Picture"
+                 id="navbar-profile-picture">
+            <a style="font-family: 'Press Start 2P', cursive; color: rgba(255, 85, 255, 0.731);">Lostdou</a>
+        </div>
+        <div class="navbar-audio-player">
+            <button class="btn btn-dark nav-link" (click)="playRandomMusic()">
+                Random Fav Music
+            </button>
+            <button class="audio-play-button" (click)="togglePlayPause()">
+                <i [class.fa-play]="!isPlaying" [class.fa-pause]="isPlaying" class="fa-solid"></i>
+            </button>
+            <input type="range" class="audio-progress" id="audioProgress" value="0" max="100" (input)="seekAudio($event)">
+            <audio #audioPlayer (timeupdate)="updateProgress()">
+                <source [src]="currentAudio" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="navbar-icons">
+            <a class="btn btn-dark nav-link" href="https://twitter.com/nosoylostdou" target="_blank">
+                <img src="xicon.png" alt="twittericon" style="max-width: 20px;">
+            </a>
+            <a class="btn btn-dark nav-link" href="https://discord.com/users/lostdou" target="_blank">
+                <img src="discordicon.png" alt="discordicon" style="max-width: 20px;">
+            </a> 
+            <a class="btn btn-dark nav-link" href="https://www.twitch.tv/lostdou" target="_blank">
+                <img src="twitchicon.png" alt="twitchicon" style="max-width: 20px;">
+            </a>
+            <a class="btn btn-dark nav-link" href="https://github.com/lostdou" target="_blank">
+                <img src="githubicon.png" alt="githubicon" style="max-width: 20px;">
+            </a>            
+        </div>
+    </nav>                
+</div>

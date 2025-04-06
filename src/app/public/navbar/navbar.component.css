@@ -1,0 +1,152 @@
+.navbar-container {
+  display: flex;
+  justify-content: center; 
+  position: fixed;
+  top: 20px; 
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 0 15px; /* Add padding for smaller screens */
+  opacity: 0; /* Initially invisible */
+  transition: opacity 0.3s ease;
+  box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+.navbar-container.visible {
+  opacity: 1; /* Visible when scrolled */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.411);
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.navbar-profile {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Espacio entre la imagen y el h5 */
+}
+
+.navbar-icons {
+  display: flex;
+  gap: 15px; /* Espacio entre los iconos */
+}
+
+.navbar-profile-picture {
+  display: block; /* Asegura que la imagen esté visible */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Estilos personalizados para el reproductor de audio */
+.navbar-audio-player {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.1); /* Fondo semi-transparente */
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+
+/* Quitar fondo blanco del audio */
+.navbar-audio-player audio {
+  background: transparent;
+  filter: invert(1) brightness(1.2); /* Cambia los colores para un modo oscuro */
+  border-radius: 8px;
+}
+
+/* Opcional: Personalizar los controles (si decides ocultar los nativos) */
+.audio-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.audio-play-button {
+  width: 30px;
+  height: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.audio-progress {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.audio-progress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  background: #bf00ff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.nav-link {
+  color: azure;
+  font-family: 'Press Start 2P';
+  font-size: 18px;
+  font-weight: 500;
+  padding: 10px 15px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 5px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  background-color: #0e0e0e;
+  color: #fff;
+}
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 768px) {
+  .navbar {
+      padding: 10px;
+  }
+  
+  .nav-link {
+      font-size: 14px;
+      padding: 8px 10px;
+  }
+
+  .navbar-audio-player {
+      display: none; /* Hide audio player on smaller screens */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .navbar-container {
+      top: 10px;
+  }
+  
+  .navbar {
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+  }
+  
+  .nav-link {
+      width: 100%;
+      font-size: 12px;
+  }
+}

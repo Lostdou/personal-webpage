@@ -1,0 +1,226 @@
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin-top: 5vw;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.profile-section p a img {
+    width: auto;
+    height: 20px; /* Ajusta la altura según sea necesario */
+}
+
+#profile-picture {
+    max-width: 250px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+ .skills-section, .projects-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    max-width: 1000px;
+    margin-left: auto; 
+    margin-right: auto;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.card {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3));
+    border: none !important;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 0.8s ease-in-out;
+    animation-delay: 0.2s; /* Slight delay for cards */
+    animation-fill-mode: both;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    width: 20px; /* Ancho inicial de la línea */
+    height: 2px; /* Grosor inicial */
+    background-color: white;
+    animation: moveAround 2s linear infinite;
+}
+
+.time-container {
+    display: inline-block;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+@keyframes moveAround {
+    0% {
+        top: 0;
+        left: 0;
+        width: 20px;
+        height: 2px;
+    }
+    24% {
+        top: 0;
+        left: 100%;
+        transform: translateX(-100%);
+        width: 20px;
+        height: 2px;
+    }
+    25% { /* Cambio rápido a vertical */
+        top: 0;
+        left: 100%;
+        transform: translateX(-100%);
+        width: 2px;
+        height: 20px;
+    }
+    49% {
+        top: 100%;
+        left: 100%;
+        transform: translate(-100%, -100%);
+        width: 2px;
+        height: 20px;
+    }
+    50% { /* Cambio rápido a horizontal */
+        top: 100%;
+        left: 100%;
+        transform: translate(-100%, -100%);
+        width: 20px;
+        height: 2px;
+    }
+    74% {
+        top: 100%;
+        left: 0;
+        transform: translateY(-100%);
+        width: 20px;
+        height: 2px;
+    }
+    75% { /* Cambio rápido a vertical */
+        top: 100%;
+        left: 0;
+        transform: translateY(-100%);
+        width: 2px;
+        height: 20px;
+    }
+    99% {
+        top: 0;
+        left: 0;
+        width: 2px;
+        height: 20px;
+    }
+    100% { /* Cambio rápido a horizontal */
+        top: 0;
+        left: 0;
+        width: 20px;
+        height: 2px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card-body {
+    background: transparent !important;
+    border: none !important;
+    color: #fff !important; /* Ajusta el color del texto si es necesario */
+}
+
+.btn-semi-transparent {
+    background-color: rgba(255, 255, 255, 0.039);
+    color: white;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-semi-transparent:hover,
+.btn-semi-transparent:active {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+}
+
+
+@media screen and (max-width: 768px) {
+    .profile-section {
+        margin-top: 2vw;
+    }
+
+    #profile-picture {
+        width:100vw;
+    }
+
+    .profile-section p a {
+        font-size: 1.5rem;
+        width: 50%;
+    }
+
+    .profile-section .card {
+        display: flex;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .profile-section card-body {
+        padding: 1.5rem;
+    }
+
+    .skills-section, .projects-section {
+        max-width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 622px) {
+    .skills-section .row, .projects-section .row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .skills-section .col-4, .projects-section .col-4 {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+  
+@media screen and (max-width: 480px) {
+    .profile-section {
+        margin-top: 20vw;
+    }
+
+    profile-section p a img {
+        height: 10px; /* Ajusta la altura para pantallas más pequeñas */
+        width: auto;
+    }
+
+    #profile-picture {
+        width: 30vw;
+    }
+
+    .profile-section p a {
+        font-size: 1.5rem;
+        width: 50%;
+    }
+
+    .profile-section .card {
+        display: flex;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .profile-section card-body {
+        padding: 1.5rem;
+    }
+}

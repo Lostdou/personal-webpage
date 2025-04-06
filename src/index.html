@@ -1,13 +1,78 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>PersonalWebpageNg</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="dou">
+  <title>Lostdou</title>
+  <link rel="icon" type="image/x-icon" href="icon.ico">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <canvas id="snow-canvas"></canvas>
   <app-root></app-root>
+  <footer class="footer">
+    <div class="text-center">
+      <p>jaja dou &copy;.</p>
+    </div>
+  </footer>
+  <script>
+    const canvas = document.getElementById('snow-canvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const snowflakes = [];
+    const maxSnowflakes = 100; // Límite máximo de copos de nieve
+
+    function createSnowflakes() {
+      if (snowflakes.length < maxSnowflakes) {
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        const radius = Math.random() * 4 + 1;
+        const speed = Math.random() * 1 + 0.5;
+        snowflakes.push({ x, y, radius, speed });
+      }
+    }
+
+    function drawSnowflakes() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'white';
+      ctx.beginPath();
+      for (const flake of snowflakes) {
+        ctx.moveTo(flake.x, flake.y);
+        ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
+      }
+      ctx.fill();
+    }
+
+    function updateSnowflakes() {
+      for (let i = snowflakes.length - 1; i >= 0; i--) {
+        const flake = snowflakes[i];
+        flake.y += flake.speed;
+        if (flake.y > canvas.height) {
+          snowflakes.splice(i, 1); // Eliminar copo de nieve que sale de la pantalla
+        }
+      }
+    }
+
+    function animateSnowflakes() {
+      drawSnowflakes();
+      updateSnowflakes();
+      requestAnimationFrame(animateSnowflakes);
+    }
+
+    setInterval(createSnowflakes, 100); // Crear copos de nieve cada 100 milisegundos
+    animateSnowflakes();
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
 </body>
 </html>
