@@ -14,11 +14,11 @@ export class NavbarComponent implements OnInit {
   isNavbarVisible = false;
 
   @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
+  @ViewChild('audioSelector') audioSelector!: ElementRef<HTMLSelectElement>; // Access the select element
 
   isPlaying: boolean = false;
   progress: number = 0;
   currentAudio: string = '';
-
 
   constructor(private audioService: MusicService) {}
 
@@ -76,27 +76,25 @@ export class NavbarComponent implements OnInit {
     audio.currentTime = (parseFloat(input.value) / 100) * audio.duration;
   }
 
-
   playRandomMusic(): void {
     this.audioService.getRandomSong().subscribe(({ fileName, audioBlob, metadata }) => {
-      console.log('Audio Blob:', audioBlob); // Log the audio blob for debugging
-      console.log('File Name:', fileName); // Log the file name for debugging
-      console.log('Metadata:', metadata); // Log the metadata for debugging
-
       const audioUrl = URL.createObjectURL(audioBlob);
 
       this.currentAudio = audioUrl;
       const audio = this.audioPlayer.nativeElement;
       audio.src = this.currentAudio;
 
+      // Update the select value
+      const selectElement = this.audioSelector.nativeElement;
+      selectElement.value = fileName;
+
       audio.onloadeddata = () => {
         audio.play();
         this.isPlaying = true;
 
-        // SweetAlert with metadata
         Swal.fire({
           toast: true,
-          position: 'top-end',
+          position: 'bottom-start',
           html: `
             <div style="display: flex; align-items: center;">
               <img src="${metadata.cover}" alt="Cover" style="width: 100px; height: 100px; margin-right: 10px; border-radius: 5px;">
@@ -120,6 +118,52 @@ export class NavbarComponent implements OnInit {
       audio.load();
     });
   }
-  
 
+  playSelectedMusic(event: Event): void {
+    const selectElement = event.target as HTMLSelectElement;
+    const selectedFile = selectElement.value;
+
+    if (selectedFile) {
+      this.audioService.getSong(selectedFile).subscribe(({ fileName, audioBlob, metadata }) => {
+        const audioUrl = URL.createObjectURL(audioBlob);
+
+        this.currentAudio = audioUrl;
+        const audio = this.audioPlayer.nativeElement;
+        audio.src = this.currentAudio;
+
+        // Update the select value
+        const selectElement = this.audioSelector.nativeElement;
+        selectElement.value = fileName;
+
+        audio.onloadeddata = () => {
+          audio.play();
+          this.isPlaying = true;
+
+          Swal.fire({
+            toast: true,
+            position: 'bottom-start',
+            html: `
+              <div style="display: flex; align-items: center;">
+                <img src="${metadata.cover}" alt="Cover" style="width: 100px; height: 100px; margin-right: 10px; border-radius: 5px;">
+                <div style="text-align: left;">
+                  <strong>Título:</strong> ${metadata.title}<br>
+                  <strong>Artista/s:</strong> ${metadata.artists.join(', ')}<br>
+                  <strong>Álbum:</strong> ${metadata.album}
+                </div>
+              </div>
+            `,
+            background: '#121212',
+            color: '#fff',
+            timer: 3000,
+            showConfirmButton: false,
+            customClass: {
+              popup: 'sweet-popup'
+            }
+          });
+        };
+
+        audio.load();
+      });
+    }
+  }
 }

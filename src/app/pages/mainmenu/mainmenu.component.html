@@ -56,157 +56,24 @@
         </div>
     </div>
 
-    <h2 class="text-center mt-5 mb-2 text-light">Skills</h2>
-
     <div class="row mt-2 align-items-center">
-        <div class="skills-section fadeIn">
-            <div class="row mb-5">
-                <div class="col-4">
-                    <div class="card fadeIn">
-                        <div class="card-body text-light text-center py-3">
-                            <div class="card-title mb-4" style="text-align: start;">
-                                <h4>☕ Lenguajes</h4>
-                            </div>
-                            <div class="d-flex flex-wrap gap-2">
-                                <img src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff&style=for-the-badge" alt="Python">
-                                <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
-                                <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
-                                <img src="https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=sharp&logoColor=white" alt="C#">
-                                <img src="https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML">
-                                <img src="https://img.shields.io/badge/CSS-639?logo=css&logoColor=fff&style=for-the-badge" alt="CSS">
-                                <img src="//img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white" alt="Markdown">
-                                <img src="https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQL">
-                                <img src="https://img.shields.io/badge/C-A8B9CC?logo=c&logoColor=fff&style=for-the-badge" alt="C">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="card fadeIn">
-                        <div class="card-body text-light text-center py-3">
-                            <div class="card-title mb-4" style="text-align: start;">
-                                <h4>☕ Frameworks y Librerias</h4>
-                            </div>
-                            <div class="d-flex flex-wrap gap-1">
-                                <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white" alt="Angular">
-                                <img src="https://img.shields.io/badge/.NET%206-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET 6">
-                                <img src="https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white" alt="Bootstrap">
-                                <img src="https://img.shields.io/badge/Flask-000?logo=flask&logoColor=fff&style=for-the-badge" alt="Flask">
-                                <img src="https://img.shields.io/badge/Selenium-43B02A?logo=selenium&logoColor=fff&style=for-the-badge" alt="Selenium">
-                                <img src="https://img.shields.io/badge/Tailwind%20CSS-06B6D4?logo=tailwindcss&logoColor=fff&style=for-the-badge" alt="Tailwind CSS">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="card fadeIn">
-                        <div class="card-body text-light text-center py-3">
-                            <div class="card-title mb-4" style="text-align: start;">
-                                <h4>☕ Herramientas</h4>
-                            </div>
-                            <div class="d-flex flex-wrap gap-1">
-                                <img src="https://img.shields.io/badge/Git-F05032?logo=git&logoColor=fff&style=for-the-badge" alt="Git">
-                                <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
-                                <img src="https://img.shields.io/badge/OBS%20Studio-302E31?logo=obsstudio&logoColor=fff&style=for-the-badge" alt="OBS Studio">
-                                <img src="https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?logo=visualstudiocode&logoColor=fff&style=for-the-badge" alt="Visual Studio Code">
-                                <img src="https://img.shields.io/badge/Postman-FF6C37?logo=postman&logoColor=fff&style=for-the-badge" alt="Postman">
-                                <img src="https://img.shields.io/badge/Visual%20Studio-5C2D91.svg?style=for-the-badge&logo=visual-studio&logoColor=white" alt="Visual Studio">
-                                <img src="https://img.shields.io/badge/Trello-0052CC?logo=trello&logoColor=fff&style=for-the-badge" alt="Trello">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="col-4"></div>
+        <div class="col-4 d-flex justify-content-between">
+            <button class="btn btn-semi-transparent" (click)="selectedSection = 'code-section'">
+                Code Section
+            </button>
+            <button class="btn btn-semi-transparent" (click)="selectedSection = 'game-section'">
+                Game Section
+            </button>
         </div>
+        <div class="col-4"></div>
     </div>
 
-    <h2 class="text-center mt-5 mb-2 text-light">Proyectos</h2>
-    <div class="text-center fadeIn">
-        <img src="https://github.com/cat-milk/Anime-Girls-Holding-Programming-Books/blob/master/Algorithms/Eru_Chitanda_Holding_40_Algorithms_Every_Programmer_Should_Know.png?raw=true" 
-            alt="Eru Chitanda Holding 40 Algorithms Every Programmer Should Know" 
-            style="max-width: 300px; margin-top: 20px;">
+    <div class="row mt-2 align-items-center" *ngIf="selectedSection === 'code-section'">
+        <app-code-section></app-code-section>
+    </div>
+    <div class="row mt-2 align-items-center" *ngIf="selectedSection === 'game-section'">
+        <app-game-section></app-game-section>
     </div>
 
-    <div class="row mt-2 align-items-center">
-        <div class="projects-section fadeIn">
-            <div class="row mb-5">
-                <div class="col-4">
-                    <div class="card fadeIn">
-                        <div class="card-body text-light py-3">
-                            <div class="card-title mb-4" style="text-align: start;">
-                                <h4>☕ AnimeLibre</h4>
-                            </div>
-                            <img src="https://github.com/cat-milk/Anime-Girls-Holding-Programming-Books/blob/master/Python/Komi_san_Python.png?raw=true" alt="Eru Chitanda Holding 40 Algorithms Every Programmer Should Know" style="max-width: 150px;">
-                            <p class="card-text">App para buscar y ver anime en tu PC sin anuncios ni cosas raras. (En Desarrollo)</p>
-                            <img class="mb-3" src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" alt="Python">
-                            <img class="mb-3" src="https://img.shields.io/badge/Selenium-43B02A?logo=selenium&logoColor=fff&style=for-the-badge" alt="Selenium">
-                            <br>
-                            <a href="https://github.com/DouDev-SA/animelibre" target="_blank" class="btn btn-semi-transparent">Ver Proyecto</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="card fadeIn">
-                        <div class="card-body text-light py-3">
-                            <div class="card-title mb-4" style="text-align: start;">
-                                <h4>⚡ SoundSwap</h4>
-                            </div>
-                            <img src="https://github.com/cat-milk/Anime-Girls-Holding-Programming-Books/blob/master/Python/Tohru-Dragon_Maid_Beginning_Python.jpg?raw=true" alt="Tohru Dragon Maid Beginning Python" style="max-width: 200px;">
-                            <p class="card-text">Aplicación de escritorio para transferir playlists entre YT y Spotify (potencialmente otras plataformas tambien).</p>
-                            <img class="mb-3" src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" alt="Python">
-                            <img class="mb-3" src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube">
-                            <img class="mb-3" src="https://img.shields.io/badge/Spotify-1DB954?style=for-the-badge&logo=spotify&logoColor=white" alt="Spotify">
-                            <br>
-                            <a href="https://github.com/lostdou/soundswap" target="_blank" class="btn btn-semi-transparent">Ver Proyecto</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="card fadeIn">
-                        <div class="card-body text-light py-3">
-                            <div class="card-title mb-4" style="text-align: start;">
-                                <h4>🎶 DouPlay</h4>
-                            </div>
-                            <img src="https://github.com/cat-milk/Anime-Girls-Holding-Programming-Books/blob/master/Python/Akko_Kagari_The_Python_Book.jpg?raw=true" alt="Akko Kagari The Python Book" style="max-width: 200px;">
-                            <p class="card-text">Bot de Discord para reproducir música de YouTube en llamadas</p>
-                            <img class="mb-3" src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" alt="Python">
-                            <img class="mb-3" src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube">
-                            <img class="mb-3" src="https://img.shields.io/badge/FFmpeg-007808?logo=ffmpeg&logoColor=fff&style=for-the-badge" alt="FFmpeg">
-                            <img class="mb-3" src="https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white" alt="Discord">
-                            <br>
-                            <a href="https://github.com/lostdou/douplay" target="_blank" class="btn btn-semi-transparent">Ver Proyecto</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    
-
-
-    <div class="text-center fadeIn">
-        <div class="projects-section">
-            <div class="row mb-5">
-                <div class="col-2"></div>
-                <div class="col-8">
-                    <div class="card fadeIn">
-                        <div class="card-body text-light py-3">
-                            <div class="card-title text-center mb-4" style="text-align: start;">
-                                Quieres contactarme?
-                            </div>
-                            <img src="https://github.com/cat-milk/Anime-Girls-Holding-Programming-Books/blob/master/Typescript/Izumi_Konata_Essential_Typescript.png?raw=true" alt="Eru Chitanda Holding 40 Algorithms Every Programmer Should Know" style="max-width: 150px;">
-                            <p class="card-text">
-                                Puedes contactarme via Twitter/X, Discord.<br> O en su defecto, por correo.
-                            </p>
-                            <br>
-                            <a href="mailto:lostdou.dev@gmail.com" class="btn btn-semi-transparent">Enviar Correo</a>
-                        </div>
-                    </div>  
-                </div>
-                <div class="col-2"></div>
-            </div>
-        </div>
-            
-    </div>
 </div>

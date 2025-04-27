@@ -101,6 +101,35 @@
   cursor: pointer;
 }
 
+.audio-selector {
+  background: rgba(0, 0, 0, 0.5); /* Fondo más oscuro y semi-transparente */
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px; /* Bordes más redondeados */
+  padding: 8px 12px;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+}
+
+.audio-selector:hover {
+  background: rgba(0, 0, 0, 0.7); /* Fondo más oscuro al pasar el mouse */
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+}
+
+.audio-selector:focus {
+  background: rgba(0, 0, 0, 0.6); /* Fondo ligeramente diferente al enfocar */
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.5); /* Resalta el borde con un brillo */
+}
+
+.audio-selector option {
+  background: rgba(0, 0, 0, 0.8); /* Fondo oscuro para las opciones */
+  color: white;
+}
 .nav-link {
   color: azure;
   font-family: 'Press Start 2P';

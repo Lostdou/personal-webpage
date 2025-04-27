@@ -1,0 +1,44 @@
+<div class="col-12 mb-5">
+    <div class="row mt-2 align-items-center">
+      <div class="row align-items-center mt-5">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <div class="game-card h-auto fadeIn">
+                <div class="card-body text-light py-3">
+                    <h4 class="card-title mb-3">
+                        <b>Juegos que me gustan</b>
+                    </h4>
+                    <p class="card-text mb-3">
+                      Si tiene disparos, accion, historia o algo adictivo, me gusta lol.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3"></div>
+      </div>
+    </div>
+
+    <div class="row mt-2 align-items-center">
+      <div class="game-section">
+        <div *ngFor="let game of games">
+          <div class="game-card">
+            <h2>{{ game.name }}</h2>
+            <div *ngIf="game.errorMessage" class="error-message">
+              {{ game.errorMessage }}
+            </div>
+  
+            <div *ngIf="!game.errorMessage">
+              <h4 class="logros-title">Logros Desbloqueados: {{ game.unlockedCount }}</h4>
+              <div class="achievements">
+                <div *ngFor="let achievement of game.recentAchievements" class="achievement" [ngClass]="{ 'locked': achievement.achieved === 0 }">
+                  <img [src]="achievement.achieved ? achievement.icon : achievement.icongray" [alt]="achievement.displayName" />
+                  <p>{{ achievement.displayName }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
