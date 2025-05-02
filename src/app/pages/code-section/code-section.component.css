@@ -16,15 +16,15 @@
     position: relative;
     overflow: hidden;
     animation: fadeIn 0.8s ease-in-out;
-    animation-delay: 0.2s; /* Slight delay for cards */
+    animation-delay: 0.2s;
     animation-fill-mode: both;
 }
 
 .card::before {
     content: '';
     position: absolute;
-    width: 20px; /* Ancho inicial de la línea */
-    height: 2px; /* Grosor inicial */
+    width: 20px;
+    height: 2px;
     background-color: white;
     animation: moveAround 2s linear infinite;
 }
@@ -52,7 +52,7 @@
         width: 20px;
         height: 2px;
     }
-    25% { /* Cambio rápido a vertical */
+    25% {
         top: 0;
         left: 100%;
         transform: translateX(-100%);
@@ -66,7 +66,7 @@
         width: 2px;
         height: 20px;
     }
-    50% { /* Cambio rápido a horizontal */
+    50% {
         top: 100%;
         left: 100%;
         transform: translate(-100%, -100%);
@@ -80,7 +80,7 @@
         width: 20px;
         height: 2px;
     }
-    75% { /* Cambio rápido a vertical */
+    75% {
         top: 100%;
         left: 0;
         transform: translateY(-100%);
@@ -93,7 +93,7 @@
         width: 2px;
         height: 20px;
     }
-    100% { /* Cambio rápido a horizontal */
+    100% {
         top: 0;
         left: 0;
         width: 20px;
@@ -115,7 +115,7 @@
 .card-body {
     background: transparent !important;
     border: none !important;
-    color: #fff !important; /* Ajusta el color del texto si es necesario */
+    color: #fff !important;
 }
 
 .btn-semi-transparent {
@@ -130,7 +130,6 @@
     background-color: rgba(255, 255, 255, 0.8);
     color: black;
 }
-
 
 @media screen and (max-width: 768px) {
     .profile-section {
@@ -159,7 +158,6 @@
     .skills-section, .projects-section {
         max-width: 100%;
     }
-
 }
 
 @media screen and (max-width: 622px) {
@@ -181,7 +179,7 @@
     }
 
     profile-section p a img {
-        height: 10px; /* Ajusta la altura para pantallas más pequeñas */
+        height: 10px;
         width: auto;
     }
 

@@ -16,8 +16,4 @@ export class SteamService {
     getAchievements(): Observable<any> {
         return this.http.get(this.API_URL + 'achievements');
     }
-
-    // getSchema(appId: string): Observable<any> {
-    //     return this.http.get(this.API_URL + 'schema/' + appId);
-    // }
 }

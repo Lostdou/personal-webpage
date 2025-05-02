@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit {
   isNavbarVisible = false;
 
   @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
-  @ViewChild('audioSelector') audioSelector!: ElementRef<HTMLSelectElement>; // Access the select element
+  @ViewChild('audioSelector') audioSelector!: ElementRef<HTMLSelectElement>; 
 
   isPlaying: boolean = false;
   progress: number = 0;
@@ -67,7 +67,17 @@ export class NavbarComponent implements OnInit {
 
   updateProgress(): void {
     const audio = this.audioPlayer.nativeElement;
-    this.progress = (audio.currentTime / audio.duration) * 100;
+    if (audio.duration) {
+      this.progress = (audio.currentTime / audio.duration) * 100;
+      const progressInput = document.getElementById('audioProgress') as HTMLInputElement;
+      progressInput.value = this.progress.toString();
+    }
+  }
+  
+  adjustVolume(event: Event): void {
+    const audio = this.audioPlayer.nativeElement;
+    const input = event.target as HTMLInputElement;
+    audio.volume = parseFloat(input.value) / 100;
   }
 
   seekAudio(event: Event): void {
@@ -84,7 +94,6 @@ export class NavbarComponent implements OnInit {
       const audio = this.audioPlayer.nativeElement;
       audio.src = this.currentAudio;
 
-      // Update the select value
       const selectElement = this.audioSelector.nativeElement;
       selectElement.value = fileName;
 
@@ -131,7 +140,6 @@ export class NavbarComponent implements OnInit {
         const audio = this.audioPlayer.nativeElement;
         audio.src = this.currentAudio;
 
-        // Update the select value
         const selectElement = this.audioSelector.nativeElement;
         selectElement.value = fileName;
 
