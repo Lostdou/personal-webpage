@@ -5,7 +5,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: black; /* Fondo negro */
+    background-color: black;
 }
 
 #snow-canvas {

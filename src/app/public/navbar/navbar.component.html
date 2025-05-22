@@ -1,36 +1,37 @@
-<div class="navbar-container" [class.visible]="isNavbarVisible">
+<div class="navbar-container">
     <nav class="navbar">
         <div class="navbar-profile">
             <img src="https://avatars.githubusercontent.com/lostdou" 
                  class="navbar-profile-picture" 
                  alt="Profile Picture"
                  id="navbar-profile-picture">
-            <a style="font-family: 'Press Start 2P', cursive; color: rgba(255, 85, 255, 0.731);">Lostdou</a>
+            <a class="btn btn-dark nav-link" style="color: rgba(255, 85, 255, 0.731);" routerLink="/">/Lostdou/</a>
+            <a class="btn btn-dark nav-link" style="color: rgba(255, 85, 255, 0.731);" routerLink="/doublog">/Blog/</a>   
         </div>
         <div class="navbar-audio-player">
             <button class="btn btn-dark nav-link" (click)="playRandomMusic()">
-            Random
+                <i class="fa-solid fa-shuffle"></i>
             </button>
-            <select #audioSelector class="audio-selector" (change)="playSelectedMusic($event)">
-                <option value="" disabled selected>Selecciona una canción</option>
-                <option value="Field of Hopes and Dreams.mp3">Field of Hopes and Dreams - Toby Fox</option>
-                <option value="Glimpse Of Love.mp3">Glimpse Of Love - Franz Ferdinand</option>
-                <option value="Guy Fieri.mp3">Guy Fieri - Shotgun Willy</option>
-                <option value="piccolo.mp3">Piccolo - bbno$</option>
-                <option value="Prodigal.mp3">Prodigal - Poor Man's Poison</option>
-                <option value="Santana - Smooth.mp3">Smooth - Santana ft. Rob Thomas</option>
-                <option value="Touch-Tone Telephone.mp3">Touch-Tone Telephone - Lemon Demon</option>
-              </select>
-            <div *ngIf="currentAudio !== ''">
+            <select #audioSelector class="audio-selector" (change)="playSelectedMusic($event)" title="Select a song">
+                <option value="" disabled selected>Music</option>
+                <option value="Field of Hopes and Dreams.mp3">Field of Hopes and Dreams</option>
+                <option value="Glimpse Of Love.mp3">Glimpse Of Love</option>
+                <option value="Guy Fieri.mp3">Guy Fieri</option>
+                <option value="piccolo.mp3">Piccolo</option>
+                <option value="Prodigal.mp3">Prodigal</option>
+                <option value="Santana - Smooth.mp3">Smooth</option>
+                <option value="Touch-Tone Telephone.mp3">Touch-Tone Telephone</option>
+            </select>
+            <div *ngIf="currentAudio !== ''" style="display: flex; align-items: center; flex-shrink: 1; min-width: 0;">
                 <button class="audio-play-button" (click)="togglePlayPause()">
                     <i [class.fa-play]="!isPlaying" [class.fa-pause]="isPlaying" class="fa-solid"></i>
                 </button>
-                <input type="range" class="audio-progress m-2" id="audioProgress" value="0" max="100" (input)="seekAudio($event)">
+                <input type="range" class="audio-progress" id="audioProgress" value="0" max="100" (input)="seekAudio($event)">
                 <input type="range" class="audio-volume" id="audioVolume" value="100" max="100" (input)="adjustVolume($event)">
             </div>
             <audio #audioPlayer (timeupdate)="updateProgress()">
-            <source [src]="currentAudio" type="audio/mpeg">
-            Your browser does not support the audio element.
+                <source [src]="currentAudio" type="audio/mpeg">
+                Your browser does not support the audio element.
             </audio>
         </div>
         <div class="navbar-icons">
@@ -45,7 +46,8 @@
             </a>
             <a class="btn btn-dark nav-link" href="https://github.com/lostdou" target="_blank">
                 <img src="githubicon.png" alt="githubicon" style="max-width: 20px;">
-            </a>            
+            </a>
+                     
         </div>
     </nav>                
 </div>

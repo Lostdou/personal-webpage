@@ -3,16 +3,18 @@
         <app-navbar></app-navbar>
     </div>
     <div class="row mt-2 align-items-center">
-        <div class="profile-section fadeIn">
+        <div class="profile-section" 
+             [ngClass]="{'sidebar-mode': isSidebarMode}" 
+             [@sidebarAnimation]="isSidebarMode ? 'sidebar' : 'normal'">
             <img src="https://avatars.githubusercontent.com/lostdou" 
             class="img rounded-circle" 
             alt="Profile Picture"
             id="profile-picture"
-            style="max-width: 250px;">
-            <h5 style="font-family: 'Press Start 2P', cursive; color: rgba(255, 85, 255, 0.731); margin-top: 15px;">Soy...</h5>
-            <h3 style="font-family: 'Press Start 2P', cursive; color: rgba(255, 85, 255, 0.731);;">Lostdou</h3>                     
+            [ngClass]="{'sidebar-profile-img': isSidebarMode}">
+            <h5 [ngClass]="{'sidebar-text': isSidebarMode}" style="font-family: 'Press Start 2P', cursive; color: rgba(255, 85, 255, 0.731); margin-top: 15px;">Soy...</h5>
+            <h3 [ngClass]="{'sidebar-text': isSidebarMode}" style="font-family: 'Press Start 2P', cursive; color: rgba(255, 85, 255, 0.731);;">Lostdou</h3>                     
             <br>
-            <p style="align-items: center">
+            <p class="social-links" [ngClass]="{'sidebar-links': isSidebarMode}">
                 <a href="https://twitter.com/nosoylostdou" target="_blank">
                     <img src="https://img.shields.io/badge/X-%23000000.svg?style=for-the-badge&logo=X&logoColor=white" alt="X">
                 </a>
@@ -26,54 +28,54 @@
                     <img src="https://img.shields.io/badge/GitHub-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
                 </a>                        
             </p>
-            <div class="row align-items-center mt-5">
-                <div class="col-2"></div>
-                <div class="col-8">
-                    <div class="d-flex justify-content-between">
-                        <div class="time-container text-light mb-3">
-                            <h5><i class="fa-solid fa-clock"></i> {{ currentTime }}</h5>
+            <div class="row align-items-center mt-5" [ngClass]="{'sidebar-about': isSidebarMode}">
+                <div [class]="isSidebarMode ? 'col-12' : 'col-2'"></div>
+                <div [class]="isSidebarMode ? 'col-12' : 'col-8'">
+                    <div *ngIf="!isSidebarMode" class="d-flex" [ngClass]="{'flex-column': isSidebarMode, 'justify-content-between': !isSidebarMode}">
+                        <div class="time-container text-light mb-3" [ngClass]="{'sidebar-time': isSidebarMode}">
+                            <h5 [ngClass]="{'sidebar-text': isSidebarMode}"><i class="fa-solid fa-clock"></i> {{ currentTime }}</h5>
                         </div>
-                        <div class="time-container text-light mb-3">
-                            <h5><i class="fa-solid fa-tag"></i> He/Him</h5>
+                        <div class="time-container text-light mb-3" [ngClass]="{'sidebar-time': isSidebarMode}">
+                            <h5 [ngClass]="{'sidebar-text': isSidebarMode}"><i class="fa-solid fa-tag"></i> He/Him</h5>
                         </div>
                     </div>
-                    <div class="card h-auto fadeIn">
+                    <div class="card h-auto fadeIn" [ngClass]="{'sidebar-card': isSidebarMode}">
                         <div class="card-body text-light py-3" style="background-color: rgba(11, 11, 11, 0.975); border: 1px solid rgb(144, 144, 144);">
-                            <h4 class="card-title mb-3">
+                            <h4 class="card-title mb-3" [ngClass]="{'sidebar-card-title': isSidebarMode}">
                                 <b>About me...</b>
                             </h4>
-                            <p class="card-text mb-3">
+                            <p class="card-text mb-3" [ngClass]="{'sidebar-card-text': isSidebarMode}">
                                 Desarrollador fullstack (autodidacta) con preferencia por Python. 
                                 Fan de los juegos y el mate, y escuchar musica mientras programo.
                                 Con conocimientos en Desarrollo Web, WebScrapping y automatización de tareas.
-                                
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-2"></div>
+                <div [class]="isSidebarMode ? 'col-12' : 'col-2'"></div>
             </div>
         </div>
     </div>
 
-    <div class="row mt-2 align-items-center">
-        <div class="col-4"></div>
-        <div class="col-4 d-flex justify-content-between">
-            <button class="btn btn-semi-transparent" (click)="selectedSection = 'code-section'">
-                Code Section
-            </button>
-            <button class="btn btn-semi-transparent" (click)="selectedSection = 'game-section'">
-                Game Section
-            </button>
+    <div class="main-content" *ngIf="!isSidebarMode" [@contentAnimation]="isSidebarMode ? 'sidebar' : 'normal'">
+        <div class="row mt-2 align-items-center">
+            <div class="col-lg-4 col-md-3 col-sm-1 col-0"></div>
+            <div class="col-lg-4 col-md-6 col-sm-10 col-12 d-flex justify-content-center">
+                <button class="btn btn-semi-transparent mx-2" (click)="selectedSection = 'code-section'">
+                    Code Section
+                </button>
+                <button class="btn btn-semi-transparent mx-2" (click)="selectedSection = 'game-section'">
+                    Game Section
+                </button>
+            </div>
+            <div class="col-lg-4 col-md-3 col-sm-1 col-0"></div>
         </div>
-        <div class="col-4"></div>
-    </div>
 
-    <div class="row mt-2 align-items-center" *ngIf="selectedSection === 'code-section'">
-        <app-code-section></app-code-section>
+        <div class="row mt-2 align-items-center" *ngIf="selectedSection === 'code-section'">
+            <app-code-section></app-code-section>
+        </div>
+        <div class="row mt-2 align-items-center" *ngIf="selectedSection === 'game-section'">
+            <app-game-section></app-game-section>
+        </div>
     </div>
-    <div class="row mt-2 align-items-center" *ngIf="selectedSection === 'game-section'">
-        <app-game-section></app-game-section>
-    </div>
-
 </div>

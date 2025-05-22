@@ -1,17 +1,19 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MusicService } from '../../services/music.service';
+import { RouterLink } from '@angular/router';
+import { LayoutService } from '../../services/layout.service';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  isNavbarVisible = false;
+  isNavbarVisible = true;
 
   @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
   @ViewChild('audioSelector') audioSelector!: ElementRef<HTMLSelectElement>; 
@@ -20,37 +22,18 @@ export class NavbarComponent implements OnInit {
   progress: number = 0;
   currentAudio: string = '';
 
-  constructor(private audioService: MusicService) {}
+  constructor(
+    private audioService: MusicService,
+    private layoutService: LayoutService
+  ) {}
 
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    const profilePicture = document.getElementById('profile-picture');
-    const navbarProfilePicture = document.getElementById('navbar-profile-picture');
-    const navbarContainer = document.querySelector('.navbar-container');
-    if (profilePicture && navbarProfilePicture && navbarContainer) {
-      const rect = profilePicture.getBoundingClientRect();
-      if (rect.bottom < 0) {
-        this.isNavbarVisible = true;
-        navbarProfilePicture.style.display = 'block';
-        setTimeout(() => {
-          navbarProfilePicture.style.opacity = '1';
-          navbarProfilePicture.style.transform = 'translateY(0)';
-        }, 10);
-      } else {
-        this.isNavbarVisible = false;
-        navbarProfilePicture.style.opacity = '0';
-        navbarProfilePicture.style.transform = 'translateY(-20px)';
-        setTimeout(() => {
-          navbarProfilePicture.style.display = 'none';
-        }, 300);
-      }
-    }
-  }
 
   ngOnInit() {
-    const navbarContainer = document.querySelector('.navbar-container');
-    if (navbarContainer) {
-      navbarContainer.classList.toggle('visible', this.isNavbarVisible);
+    const navbarProfilePicture = document.getElementById('navbar-profile-picture');
+    if (navbarProfilePicture) {
+      navbarProfilePicture.style.display = 'block';
+      navbarProfilePicture.style.opacity = '1';
+      navbarProfilePicture.style.transform = 'translateY(0)';
     }
   }
 
