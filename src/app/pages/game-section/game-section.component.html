@@ -9,7 +9,7 @@
                         <b>Juegos que me gustan</b>
                     </h4>
                     <p class="card-text mb-3">
-                      Si tiene disparos, accion, historia o algo adictivo, me gusta lol.
+                      Si tiene disparos, accion, historia o algo adictivo, me gusta jijo.
                     </p>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                 </div>
     
                 <div *ngIf="!game.errorMessage">
-                  <h4 class="logros-title">Logros Desbloqueados: {{ game.unlockedCount }}</h4>
+                  <h4 class="logros-title">Logros Desbloqueados: {{ game.unlockedCount }} / {{ game.totalAchievements }}</h4>
                   <div class="achievements">
                     <div *ngFor="let achievement of game.recentAchievements" class="achievement" [ngClass]="{ 'locked': achievement.achieved === 0 }">
                       <img [src]="achievement.achieved ? achievement.icon : achievement.icongray" [alt]="achievement.displayName" />

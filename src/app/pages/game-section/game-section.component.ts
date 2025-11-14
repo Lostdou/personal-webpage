@@ -19,6 +19,7 @@ export class GameSectionComponent implements OnInit {
   ngOnInit(): void {
 
     this.steamSv.getAchievements().subscribe({next: (res: any) => {{
+        console.log(res);
         this.games = res;
       }}
     });

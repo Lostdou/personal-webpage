@@ -1,19 +1,18 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MusicService } from '../../services/music.service';
-import { RouterLink } from '@angular/router';
-import { LayoutService } from '../../services/layout.service';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
   isNavbarVisible = true;
+  @Input() hideAudioPlayer: boolean = false;
 
   @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
   @ViewChild('audioSelector') audioSelector!: ElementRef<HTMLSelectElement>; 
@@ -24,7 +23,6 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private audioService: MusicService,
-    private layoutService: LayoutService
   ) {}
 
 

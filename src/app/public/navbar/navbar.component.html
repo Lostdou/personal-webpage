@@ -5,10 +5,9 @@
                  class="navbar-profile-picture" 
                  alt="Profile Picture"
                  id="navbar-profile-picture">
-            <a class="btn btn-dark nav-link" style="color: rgba(255, 85, 255, 0.731);" routerLink="/">/Lostdou/</a>
-            <a class="btn btn-dark nav-link" style="color: rgba(255, 85, 255, 0.731);" routerLink="/doublog">/Blog/</a>   
+            <a class="btn btn-dark nav-link" style="color: rgba(255, 85, 255, 0.731);">/Lostdou/</a>
         </div>
-        <div class="navbar-audio-player">
+        <div class="navbar-audio-player" *ngIf="!hideAudioPlayer">
             <button class="btn btn-dark nav-link" (click)="playRandomMusic()">
                 <i class="fa-solid fa-shuffle"></i>
             </button>
